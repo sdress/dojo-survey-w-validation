@@ -12,13 +12,15 @@
     <header>
     </header>
     <main>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <p style="color: red;">{{ message }}</p>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+        <div class="alert">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="alert-danger">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
         <form action="/create/survey" method="post" style="margin:40px 20%; border: 2px solid black; padding: 40px; background-color: lavender;">
             <div class="form-group row">
                 <label for="name" class="col-sm-4 col-form-label">Your Name: </label>
@@ -51,7 +53,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="comment">Comment (optional): </label>
+                <label for="comment">Comment: </label>
                 <textarea name="comment" cols="30" rows="10" class="form-control"></textarea>
             </div>
             <button class="btn btn-primary" type="submit">Submit</button>
