@@ -12,7 +12,14 @@
     <header>
     </header>
     <main>
-        <form action="/process" method="post" style="margin:40px 20%; border: 2px solid black; padding: 40px; background-color: lavender;">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action="/create/survey" method="post" style="margin:40px 20%; border: 2px solid black; padding: 40px; background-color: lavender;">
             <div class="form-group row">
                 <label for="name" class="col-sm-4 col-form-label">Your Name: </label>
                 <div class="col-sm-6">
@@ -23,6 +30,7 @@
                 <label for="location" class="col-sm-4 col-form-label">Dojo Location: </label>
                 <div class="col-sm-8">
                     <select name="location" class="form-select">
+                        <option value="NA">--</option>
                         <option value="San Jose">San Jose</option>
                         <option value="Los Angeles">Los Angeles</option>
                         <option value="Houston">Houston</option>
@@ -34,6 +42,7 @@
                 <label for="language" class="col-sm-4 col-form-label">Favorite Language: </label>
                 <div class="col-sm-8">
                     <select name="language" class="form-select">
+                        <option value="NA">--</option>
                         <option value="Python">Python</option>
                         <option value="Javascript">Javascript</option>
                         <option value="HTML">HTML</option>
